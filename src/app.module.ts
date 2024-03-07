@@ -8,9 +8,12 @@ import { Product } from './products/entities/product.entity'
 import { OrdersModule } from './orders/orders.module'
 import { OrderItem } from './orders/entities/order-item.entity'
 import { Order } from './orders/entities/order.entity'
+import { AuthModule } from './auth/auth.module'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -24,6 +27,7 @@ import { Order } from './orders/entities/order.entity'
     }),
     ProductsModule,
     OrdersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

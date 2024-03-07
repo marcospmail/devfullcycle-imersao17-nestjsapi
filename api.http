@@ -11,3 +11,32 @@ Content-Type: application/json
     "image_url": "https://example.com/image.png",
     "price": 100
 }
+
+###
+
+GET http://localhost:3000/products
+
+### 
+
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "items": [
+        {
+            "product_id": "09424707-dae0-4550-8ade-b4bea22fd8f4",
+            "quantity": 2
+        }
+    ],
+    "card_hash": "1234567890123456"
+}
+
+###
+
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}

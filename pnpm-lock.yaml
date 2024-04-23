@@ -33,8 +33,8 @@ dependencies:
     specifier: ^0.14.1
     version: 0.14.1
   mysql2:
-    specifier: ^3.9.4
-    version: 3.9.4
+    specifier: ^3.9.7
+    version: 3.9.7
   reflect-metadata:
     specifier: ^0.2.0
     version: 0.2.1
@@ -43,7 +43,7 @@ dependencies:
     version: 7.8.1
   typeorm:
     specifier: ^0.3.20
-    version: 0.3.20(mysql2@3.9.4)(ts-node@10.9.2)
+    version: 0.3.20(mysql2@3.9.7)(ts-node@10.9.2)
 
 devDependencies:
   '@nestjs/cli':
@@ -1062,7 +1062,7 @@ packages:
       '@nestjs/core': 10.3.3(@nestjs/common@10.3.3)(@nestjs/platform-express@10.3.7)(reflect-metadata@0.2.1)(rxjs@7.8.1)
       reflect-metadata: 0.2.1
       rxjs: 7.8.1
-      typeorm: 0.3.20(mysql2@3.9.4)(ts-node@10.9.2)
+      typeorm: 0.3.20(mysql2@3.9.7)(ts-node@10.9.2)
       uuid: 9.0.1
     dev: false
 
@@ -4130,8 +4130,8 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /mysql2@3.9.4:
-    resolution: {integrity: sha512-OEESQuwxMza803knC1YSt7NMuc1BrK9j7gZhCSs2WAyxr1vfiI7QLaLOKTh5c9SWGz98qVyQUbK8/WckevNQhg==}
+  /mysql2@3.9.7:
+    resolution: {integrity: sha512-KnJT8vYRcNAZv73uf9zpXqNbvBG7DJrs+1nACsjZP1HMJ1TgXEy8wnNilXAn/5i57JizXKtrUtwDB7HxT9DDpw==}
     engines: {node: '>= 8.0'}
     dependencies:
       denque: 2.1.0
@@ -5221,7 +5221,7 @@ packages:
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm@0.3.20(mysql2@3.9.4)(ts-node@10.9.2):
+  /typeorm@0.3.20(mysql2@3.9.7)(ts-node@10.9.2):
     resolution: {integrity: sha512-sJ0T08dV5eoZroaq9uPKBoNcGslHBR4E4y+EBHs//SiGbblGe7IeduP/IH4ddCcj0qp3PHwDwGnuvqEAnKlq/Q==}
     engines: {node: '>=16.13.0'}
     hasBin: true
@@ -5289,7 +5289,7 @@ packages:
       dotenv: 16.4.5
       glob: 10.3.10
       mkdirp: 2.1.6
-      mysql2: 3.9.4
+      mysql2: 3.9.7
       reflect-metadata: 0.2.1
       sha.js: 2.4.11
       ts-node: 10.9.2(@types/node@20.11.20)(typescript@5.3.3)

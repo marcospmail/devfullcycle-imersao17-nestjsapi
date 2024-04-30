@@ -20,6 +20,7 @@ GET http://localhost:3000/products
 
 POST http://localhost:3000/orders
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTA3MjY4MzYsImV4cCI6MTcxMDcyNjg5Nn0.yHDC2PekBwbbIlNLQVBDji5s9oNznMWuvnE7Hh5rYck
 
 {
     "items": [

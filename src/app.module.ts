@@ -10,6 +10,7 @@ import { OrderItem } from './orders/entities/order-item.entity'
 import { Order } from './orders/entities/order.entity'
 import { AuthModule } from './auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ConfigModule } from '@nestjs/config'
     ProductsModule,
     OrdersModule,
     AuthModule,
+    RabbitmqModule,
   ],
   controllers: [AppController],
   providers: [AppService],

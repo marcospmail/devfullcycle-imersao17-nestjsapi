@@ -5,15 +5,19 @@ import { In, Repository } from 'typeorm'
 import { CreateOrderDto } from './dto/create-order.dto'
 import { Order } from './entities/order.entity'
 import { Product } from 'src/products/entities/product.entity'
+import { AmqpConnection } from '@golevelup/nestjs-rabbitmq'
 
 @Injectable()
 export class OrdersService {
   constructor(
     @InjectRepository(Product) private productRepository: Repository<Product>,
     @InjectRepository(Order) private orderRepository: Repository<Order>,
+    private amqpConnection: AmqpConnection,
   ) {}
 
-  async create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto & { client_id: number }) {
+    const { client_id } = createOrderDto
+
     const productIds = createOrderDto.items.map((item) => item.product_id)
     const uniqueProductIds = [...new Set(productIds)]
     const products = await this.productRepository.findBy({
@@ -25,7 +29,7 @@ export class OrdersService {
     }
 
     const order = Order.create({
-      client_id: 1,
+      client_id,
       items: createOrderDto.items.map((item) => {
         const product = products.find((p) => p.id === item.product_id)
         return {
@@ -36,14 +40,34 @@ export class OrdersService {
       }),
     })
 
-    return this.orderRepository.save(order)
+    await this.orderRepository.save(order)
+
+    await this.amqpConnection.publish('amq.direct', 'OrderCreated', {
+      id: order.id,
+      card_hash: createOrderDto.card_hash,
+      total: order.total,
+    })
+
+    return order
   }
 
-  findAll() {
-    return this.orderRepository.find()
+  findAll(client_id: number) {
+    return this.orderRepository.find({
+      where: {
+        client_id,
+      },
+      order: {
+        created_at: 'DESC',
+      },
+    })
   }
 
-  findOne(id: string) {
-    return this.orderRepository.findOne({ where: { id } })
+  findOne(id: string, client_id: number) {
+    return this.orderRepository.findOneOrFail({
+      where: {
+        id,
+        client_id,
+      },
+    })
   }
 }
